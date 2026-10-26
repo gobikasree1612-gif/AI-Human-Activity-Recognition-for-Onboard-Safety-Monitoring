@@ -1,0 +1,75 @@
+# ============================================================
+# Onboard HAR System - Configuration
+# ============================================================
+# NOTE: Thresholds marked with [CALIBRATION REQUIRED] are
+# reasonable starting defaults. Real-world calibration on your
+# specific camera/environment is recommended for best accuracy.
+# ============================================================
+
+model:
+  # YOLO Pose model file - will be auto-downloaded by Ultralytics
+  # if not present in the working directory.
+  # Options: yolo11n-pose.pt (fastest), yolo11s-pose.pt, yolo11m-pose.pt
+  pose_model: "yolo11n-pose.pt"
+  # Minimum YOLO detection confidence to keep a detection
+  detection_confidence: 0.40
+  # IoU threshold for NMS
+  iou_threshold: 0.45
+  # Device: "cpu", "cuda", "mps" or empty string for auto-detect
+  device: ""
+
+activity:
+  # Number of frames to accumulate before classifying (temporal window)
+  sequence_length: 20
+  # Minimum ML model confidence to trust; below this → UNKNOWN
+  confidence_threshold: 0.60
+  # Minimum keypoint score to consider a keypoint valid
+  pose_confidence_threshold: 0.40
+  # If BOTH wrist keypoints are below this, consider upper body occluded
+  upper_body_keypoint_threshold: 0.30
+
+fall:
+  # [CALIBRATION REQUIRED] Frames with low body position after
+  # a possible-fall event needed to confirm a fall
+  confirmation_frames: 15
+  # [CALIBRATION REQUIRED] Minimum normalised downward velocity
+  # (positive = downward) to flag a possible fall
+  downward_velocity_threshold: 0.04
+  # [CALIBRATION REQUIRED] Body tilt angle (degrees from vertical)
+  # above which the body is considered nearly horizontal
+  body_angle_threshold: 55
+  # [CALIBRATION REQUIRED] Fraction of standing torso-height;
+  # if the visible torso is shorter than this fraction of baseline
+  # the person may be down
+  low_height_fraction: 0.55
+  # How many seconds a possible-fall can stay unconfirmed before reset
+  possible_fall_timeout_seconds: 5.0
+
+tracking:
+  # Maximum frames a person can be missing before their state is cleared
+  max_missing_frames: 60
+
+performance:
+  # Target processing FPS (informational – does not throttle the pipeline)
+  target_fps: 20
+  # Warm-up frames to skip before latency measurements stabilise
+  warmup_frames: 5
+
+classifier:
+  # Path to a trained model saved with joblib
+  # Leave empty to use the rule-based fallback
+  model_path: "models/har_classifier.joblib"
+  # Path to a fitted sklearn scaler saved with joblib (optional)
+  scaler_path: "models/har_scaler.joblib"
+
+logging:
+  level: "INFO"          # DEBUG | INFO | WARNING | ERROR
+  log_to_file: false
+  log_file: "logs/har.log"
+
+dataset:
+  # Configurable collection targets for dataset assistant and readiness checking.
+  # These are collection planning targets, NOT fake data requirements.
+  target_videos_per_class: 10
+  target_subjects_per_class: 3
+  minimum_duration_seconds: 5

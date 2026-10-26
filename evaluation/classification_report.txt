@@ -1,0 +1,20 @@
+============================================================
+HAR Activity Classifier — Test Set Evaluation
+Generated: 2026-09-29T15:59:18.179132
+Samples: 300
+Accuracy: 0.8667
+============================================================
+
+Activity            Precision     Recall         F1    Support
+------------------------------------------------------------
+FALLING                1.0000     1.0000     1.0000      100.0
+RUNNING                0.9839     0.6100     0.7531      100.0
+SITTING                0.9429     0.9900     0.9659      100.0
+STANDING               0.0000     0.0000     0.0000          0
+WALKING                0.0000     0.0000     0.0000        0.0
+------------------------------------------------------------
+macro avg              0.6797 (macro F1)
+weighted avg           0.9063 (weighted F1)
+
+NOTE: All metrics are from the held-out test set.
+Split strategy: by source video (no data leakage).

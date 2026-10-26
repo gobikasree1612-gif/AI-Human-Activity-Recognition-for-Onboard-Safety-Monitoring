@@ -1,0 +1,27 @@
+# Raw video files (can be large)
+dataset/raw/
+
+# Trained model files (regenerate from data)
+models/*.joblib
+models/*.pkl
+
+# Evaluation images
+evaluation/*.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Logs
+logs/
+*.log

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-09-29T17:12:14.606458",
+  "video_count": 0,
+  "class_counts": {
+    "STANDING": 0,
+    "SITTING": 0,
+    "WALKING": 0,
+    "RUNNING": 0,
+    "FALLING": 0
+  },
+  "subject_count": 0,
+  "session_count": 0,
+  "total_duration_seconds": 0.0,
+  "feature_sample_count": 0,
+  "split_counts": {
+    "train": 0,
+    "validation": 0,
+    "test": 0
+  },
+  "manifest_hash": "c710c98c6058be708eb2d4d8666c7b111bb2548627e062baed15e24aae066431",
+  "is_dataset_empty": true
+}
